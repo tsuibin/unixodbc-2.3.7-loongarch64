@@ -19,3 +19,8 @@ unixODBC 2.3.7 是老 K&R 风格代码，GCC 16 默认 C23 会报 `too many argu
         CFLAGS="-std=gnu17 -O2 -Wno-implicit-function-declaration -Wno-int-conversion \
                 -Wno-incompatible-pointer-types -Wno-implicit-int"
     make -j4 && make install
+
+## 更新（2026-11-04）
+
+打过 `sqltypes.h.patch` 的这份解决了 clucene 的 `TCHAR` 冲突，Exprs / Exec / Olap 全量编译通过。
+链接行另需 `-lltdl`（unixODBC 引用），最终 0 undefined symbol。
